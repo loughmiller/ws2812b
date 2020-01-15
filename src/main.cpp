@@ -32,9 +32,14 @@ void setup() {
 }
 
 void loop() {
-  all->setAllCRGB(0x000000);  // this only clears the array, not the LEDs, it's fine at the top
+//  all->setAllCRGB(0xFF0004);
 
-  all->setAllCRGB(0xFF0004);
+  for (uint_fast16_t i = 0; i < NUM_LEDS; i++) {
+    uint_fast8_t hue = floor(i / 10);
+    hue = (hue % 2) * 64;
+    leds[i] = CHSV(hue, SATURATION, VALUE);
+  }
 
   FastLED.show();
+  FastLED.delay(1000000);
 }
