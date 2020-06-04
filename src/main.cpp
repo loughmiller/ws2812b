@@ -3,7 +3,7 @@
 #include <Visualization.h>
 
 // FAST LED
-#define NUM_LEDS 288
+#define NUM_LEDS 144
 #define DISPLAY_LED_PIN 2
 
 CRGB leds[NUM_LEDS];
@@ -36,10 +36,10 @@ void loop() {
 
   for (uint_fast16_t i = 0; i < NUM_LEDS; i++) {
     uint_fast8_t hue = floor(i / 10);
-    hue = (hue % 2) * 64;
-    leds[i] = CHSV(hue, SATURATION, VALUE);
+    hue = ((hue % 2) * 128) + 10;
+    leds[i] = CHSV(hue, SATURATION, 101);
   }
 
   FastLED.show();
-  FastLED.delay(1000000);
+  delay(1000000);
 }
